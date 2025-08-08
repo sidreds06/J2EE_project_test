@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Home - Expense Tracker</title>
+    <link th:href="@{/static/css/style.css}" rel="stylesheet"/>
+</head>
+<body>
+    <div class="container">
+        <div th:if="${name}">
+            <h2>Welcome, <span th:text="${name}"></span>!</h2>
+            <p>Your email (user ID): <span th:text="${email}"></span></p>
+            <a href="logout">Logout</a>
+        </div>
+        <div th:unless="${name}">
+            <a href="login">Login with Google</a>
+        </div>
+    </div>
+</body>
+</html>

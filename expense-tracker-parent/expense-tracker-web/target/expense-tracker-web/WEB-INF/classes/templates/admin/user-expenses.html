@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>User Expenses - Admin View</title>
+    <link rel="stylesheet" th:href="@{/static/css/style.css}">
+</head>
+<body>
+    <!-- Include navigation bar -->
+    <div th:replace="nav :: navbar"></div>
+
+    <div class="container">
+        <h2>Expenses for: <span th:text="${email}">user@example.com</span></h2>
+
+        <table border="1" cellpadding="8" cellspacing="0">
+            <thead>
+                <tr>
+                    <th>Date</th>
+                    <th>Category</th>
+                    <th>Currency</th>
+                    <th>Amount</th>
+                    <th>Notes</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr th:each="expense : ${expenses}">
+                    <td th:text="${expense.date}">2025-01-01</td>
+                    <td th:text="${expense.category}">Food</td>
+                    <td th:text="${expense.currency}">USD</td>
+                    <td th:text="${expense.amount}">12.50</td>
+                    <td th:text="${expense.notes}">Lunch</td>
+                </tr>
+            </tbody>
+        </table>
+
+        <br>
+        <a th:href="@{/admin/users}">← Back to Dashboard</a>
+    </div>
+</body>
+</html>

@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<application xmlns="http://xmlns.jcp.org/xml/ns/javaee" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/application_7.xsd" version="7">
+  <display-name>expense-tracker-ear</display-name>
+  <module>
+    <web>
+      <web-uri>com.expensetracker-expense-tracker-auth-1.0.0.war</web-uri>
+      <context-root>/expense-tracker-auth</context-root>
+    </web>
+  </module>
+  <module>
+    <web>
+      <web-uri>com.expensetracker-expense-tracker-expenses-1.0.0.war</web-uri>
+      <context-root>/expense-tracker-expenses</context-root>
+    </web>
+  </module>
+  <module>
+    <web>
+      <web-uri>com.expensetracker-expense-tracker-web-1.0.0.war</web-uri>
+      <context-root>/expense-tracker-web</context-root>
+    </web>
+  </module>
+</application>

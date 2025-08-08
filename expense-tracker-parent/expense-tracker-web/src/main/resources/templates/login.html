@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Login - Expense Tracker</title>
+    <link th:href="@{/static/css/style.css}" rel="stylesheet"/>
+    <style>
+        .google-btn {
+            background: #4285F4;
+            color: white;
+            padding: 12px 32px;
+            border: none;
+            border-radius: 4px;
+            font-size: 1.1em;
+            cursor: pointer;
+            margin: 40px auto 0 auto;
+            display: block;
+            width: fit-content;
+        }
+        .container {
+            margin: 80px auto;
+            width: 350px;
+            text-align: center;
+            box-shadow: 0 4px 24px #d9d9d9;
+            padding: 2.5em 2em;
+            border-radius: 12px;
+            background: #fff;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Sign in to Expense Tracker</h1>
+        <a class="google-btn" th:href="@{/oauth2/authorization/google}">
+            <img src="https://developers.google.com/identity/images/g-logo.png" style="height: 22px; vertical-align: middle; margin-right:10px;">
+            Sign in with Google
+        </a>
+    </div>
+</body>
+</html>

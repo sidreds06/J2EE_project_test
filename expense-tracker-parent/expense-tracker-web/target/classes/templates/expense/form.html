@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Expense Form</title>
+    <link rel="stylesheet" th:href="@{/static/css/style.css}" />
+</head>
+<body>
+<div th:replace="nav :: navbar"></div>
+<div class="container">
+    <h2>Add/Edit Expense</h2>
+    <form th:action="@{/expenses/add}" th:object="${expense}" method="post">
+        <label>Date:</label>
+        <input type="date" th:field="*{date}" required />
+
+        <label>Category:</label>
+        <select th:field="*{category}" required>
+            <option value="">-- Select Category --</option>
+            <option th:value="'Food'" th:text="'Food'"></option>
+            <option th:value="'Transport'" th:text="'Transport'"></option>
+            <option th:value="'Health'" th:text="'Health'"></option>
+            <option th:value="'Shopping'" th:text="'Shopping'"></option>
+            <option th:value="'Utilities'" th:text="'Utilities'"></option>
+        </select>
+
+        <label>Currency:</label>
+        <select th:field="*{currency}" required>
+            <option value="">-- Select Currency --</option>
+            <option th:value="'CAD'" th:text="'CAD - Canadian Dollar'"></option>
+            <option th:value="'USD'" th:text="'USD - US Dollar'"></option>
+            <option th:value="'GBP'" th:text="'GBP - Pound Sterling'"></option>
+            <option th:value="'EUR'" th:text="'EUR - Euro'"></option>
+            <option th:value="'INR'" th:text="'INR - Indian Rupee'"></option>
+        </select>
+
+        <label>Amount:</label>
+        <input type="number" step="0.01" th:field="*{amount}" required />
+
+        <label>Notes:</label>
+        <input type="text" th:field="*{notes}" />
+
+        <button type="submit">Save</button>
+    </form>
+</div>
+</body>
+</html>

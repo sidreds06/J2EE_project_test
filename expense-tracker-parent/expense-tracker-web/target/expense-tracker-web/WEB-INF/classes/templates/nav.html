@@ -1,0 +1,19 @@
+<!-- src/main/resources/templates/fragments/navbar.html -->
+<div th:fragment="navbar">
+    <nav style="display: flex; justify-content: space-between; align-items: center; padding: 1rem; background-color: #f0f0f0; border-bottom: 1px solid #ccc;">
+        <div style="display: flex; gap: 1rem;">
+            <a th:href="@{/dashboard}" style="text-decoration: none; font-weight: bold; color: #333;">Dashboard</a>
+            <a th:href="@{/expenses}" style="text-decoration: none; font-weight: bold; color: #333;">Expenses</a>
+            <a th:if="${#authorization.expression('hasRole(''ADMIN'')')}"
+               th:href="@{/admin/users}"
+               style="text-decoration: none; font-weight: bold; color: #333;">Admin</a>
+        </div>
+
+        <div style="display: flex; align-items: center; gap: 1rem;">
+            <span th:if="${loggedInName != null}">
+                 <strong th:text="${loggedInName}" style="color: #007bff;"></strong>
+            </span>
+            <a th:href="@{/logout}" style="text-decoration: none; color: red;">Logout</a>
+        </div>
+    </nav>
+</div>

@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?><project-modules id="moduleCoreId" project-version="1.5.0">
+        
+    <wb-module deploy-name="expense-tracker-ear-1.0.0">
+                
+        <wb-resource deploy-path="/" source-path="/target/m2e-wtp/ear-resources"/>
+                
+        <wb-resource deploy-path="/" source-path="/src/main/application" tag="defaultRootSource"/>
+        <dependent-module archiveName="com.expensetracker-expense-tracker-auth-1.0.0.war" deploy-path="/" handle="module:/resource/expense-tracker-auth/expense-tracker-auth">
+            <dependency-type>uses</dependency-type>
+        </dependent-module>
+        <dependent-module archiveName="com.expensetracker-expense-tracker-expenses-1.0.0.war" deploy-path="/" handle="module:/resource/expense-tracker-expenses/expense-tracker-expenses">
+            <dependency-type>uses</dependency-type>
+        </dependent-module>
+        <dependent-module archiveName="com.expensetracker-expense-tracker-web-1.0.0.war" deploy-path="/" handle="module:/resource/expense-tracker-web/expense-tracker-web">
+            <dependency-type>uses</dependency-type>
+        </dependent-module>
+            
+    </wb-module>
+    
+</project-modules>

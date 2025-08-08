@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Admin Dashboard - Expense Tracker</title>
+    <link rel="stylesheet" th:href="@{/static/css/style.css}">
+</head>
+<body>
+    <!-- Include navigation bar -->
+    <div th:replace="nav :: navbar"></div>
+
+    <div class="container">
+        <h2>Admin Dashboard</h2>
+
+        <form method="get" th:action="@{/admin/users}">
+    <input type="text" name="keyword" th:value="${keyword}" placeholder="Search by name or email"/>
+    <button type="submit">Search</button>
+</form>
+
+<table border="1" cellpadding="8" cellspacing="0">
+    <thead>
+        <tr>
+            <th>Name</th>
+            <th>Email</th>
+            <th>Roles</th>
+            <th>Actions</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr th:each="user : ${users}">
+            <td th:text="${user.name}">Name</td>
+            <td th:text="${user.email}">Email</td>
+            <td th:text="${user.roles}">Roles</td>
+            <td>
+                <a th:href="@{/admin/user/{email}/expenses(email=${user.email})}">View Expenses</a> |
+                <a th:href="@{/admin/delete/{email}(email=${user.email})}"
+                   onclick="return confirm('Delete user: ' + [[${user.name}]] + '?');">Delete</a>
+            </td>
+        </tr>
+    </tbody>
+</table>
+
+<!-- Pagination -->
+<div th:if="${totalPages > 1}">
+    <div>
+        <span>Pages:</span>
+        <span th:each="i : ${#numbers.sequence(0, totalPages - 1)}">
+            <a th:href="@{/admin/users(page=${i}, keyword=${keyword})}"
+               th:text="${i + 1}"
+               th:classappend="${i == currentPage} ? 'active-page' : ''">1</a>
+        </span>
+    </div>
+</div>
+
+    </div>
+</body>
+</html>

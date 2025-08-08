@@ -1,0 +1,4 @@
+com\expensetracker\auth\repository\AuthUserRepository.class
+com\expensetracker\auth\service\CustomOAuth2UserService.class
+com\expensetracker\auth\AuthApplication.class
+com\expensetracker\auth\entity\AuthUser.class

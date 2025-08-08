@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?><project-modules id="moduleCoreId" project-version="1.5.0">
+    <wb-module deploy-name="expense-tracker-web">
+        <wb-resource deploy-path="/" source-path="/target/m2e-wtp/web-resources"/>
+        <wb-resource deploy-path="/" source-path="/src/main/webapp" tag="defaultRootSource"/>
+        <wb-resource deploy-path="/WEB-INF/classes" source-path="/src/main/java"/>
+        <wb-resource deploy-path="/WEB-INF/classes" source-path="/src/main/resources"/>
+        <wb-resource deploy-path="/WEB-INF/classes" source-path="/target/generated-sources/annotations"/>
+        <dependent-module archiveName="expense-tracker-auth-1.0.0.jar" deploy-path="/WEB-INF/lib" handle="module:/resource/expense-tracker-auth/expense-tracker-auth">
+            <dependency-type>uses</dependency-type>
+        </dependent-module>
+        <dependent-module archiveName="expense-tracker-expenses-1.0.0.jar" deploy-path="/WEB-INF/lib" handle="module:/resource/expense-tracker-expenses/expense-tracker-expenses">
+            <dependency-type>uses</dependency-type>
+        </dependent-module>
+        <property name="context-root" value="expense-tracker-web"/>
+        <property name="java-output-path" value="/expense-tracker-web/target/classes"/>
+    </wb-module>
+</project-modules>

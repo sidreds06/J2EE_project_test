@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>My Expenses</title>
+    <link rel="stylesheet" th:href="@{/static/css/style.css}" />
+</head>
+<body>
+<div th:replace="nav :: navbar"></div>
+
+<div class="container">
+    <h2>My Expenses</h2>
+    <a th:href="@{/expenses/add}">+ Add New Expense</a>
+
+    <form method="get" th:action="@{/expenses}" style="margin-top: 20px;">
+        <label>Category:</label>
+        <select name="category">
+            <option value="">-- All --</option>
+            <option>Food</option>
+            <option>Transport</option>
+            <option>Health</option>
+            <option>Shopping</option>
+            <option>Utilities</option>
+        </select>
+
+        <label>Currency:</label>
+        <select name="currency">
+            <option value="">-- All --</option>
+            <option>CAD</option>
+            <option>USD</option>
+            <option>GBP</option>
+            <option>EUR</option>
+            <option>INR</option>
+        </select>
+
+        <label>Date From:</label>
+        <input type="date" name="start" />
+        <label>To:</label>
+        <input type="date" name="end" />
+        <button type="submit">Filter</button>
+    </form>
+
+    <table border="1" cellpadding="8" cellspacing="0" style="margin-top: 20px;">
+    <thead>
+    <tr>
+        <th>Date</th>
+        <th>Category</th>
+        <th>Amount</th>
+        <th>Currency</th>
+        <th>Notes</th>
+        <th>Action</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="e : ${expenses}">
+        <td th:text="${e.date}"></td>
+        <td th:text="${e.category}"></td>
+        <td th:text="${e.amount}"></td>
+        <td th:text="${e.currency}"></td>
+        <td th:text="${e.notes}"></td>
+        <td>
+            <a th:href="@{'/expenses/edit/' + ${e.id}}">Edit</a> |
+            <a th:href="@{'/expenses/delete/' + ${e.id}}"
+               onclick="return confirm('Are you sure you want to delete this expense?')">Delete</a>
+        </td>
+    </tr>
+    </tbody>
+</table>
+
+<!-- Pagination controls -->
+<div style="margin-top: 20px;">
+    <div th:if="${totalPages > 1}">
+        <ul style="list-style: none; display: flex; gap: 10px; padding: 0;">
+            <li th:each="i : ${#numbers.sequence(0, totalPages - 1)}">
+                <a th:href="@{/expenses(page=${i}, category=${category}, currency=${currency}, start=${start}, end=${end})}"
+                   th:text="${i + 1}"
+                   th:class="${i == currentPage} ? 'active-page' : ''"
+                   style="padding: 4px 8px; border: 1px solid #ccc; text-decoration: none;"></a>
+            </li>
+        </ul>
+    </div>
+</div>
+
+    
+</div>
+</body>
+</html>

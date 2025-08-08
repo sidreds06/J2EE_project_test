@@ -1,0 +1,9 @@
+CREATE DATABASE expense_db;
+
+USE expense_db;
+
+CREATE TABLE users (
+    email VARCHAR(255) NOT NULL PRIMARY KEY,
+    name VARCHAR(255),
+    roles VARCHAR(255)
+);

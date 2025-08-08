@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Dashboard</title>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <link rel="stylesheet" th:href="@{/static/css/style.css}" />
+</head>
+<body>
+    <div th:replace="nav :: navbar"></div>
+
+    <div class="container">
+        <h2>Expense Dashboard</h2>
+
+        <div style="width: 600px; margin: auto;">
+            <canvas id="categoryChart"></canvas>
+        </div>
+        <br>
+        <div style="width: 800px; margin: auto;">
+            <canvas id="monthlyChart"></canvas>
+        </div>
+    </div>
+
+    <script th:inline="javascript">
+        /*<![CDATA[*/
+        const categoryData = [[${categoryData}]];
+        const monthData = [[${monthData}]];
+
+        const categoryLabels = Object.keys(categoryData);
+        const categoryAmounts = Object.values(categoryData);
+
+        const monthLabels = Object.keys(monthData);
+        const monthAmounts = Object.values(monthData);
+
+        // Pie chart for Category
+        new Chart(document.getElementById("categoryChart"), {
+            type: 'pie',
+            data: {
+                labels: categoryLabels,
+                datasets: [{
+                    label: 'Expenses by Category',
+                    data: categoryAmounts,
+                    borderWidth: 1
+                }]
+            },
+            options: {
+                responsive: true,
+                plugins: {
+                    title: {
+                        display: true,
+                        text: 'Expenses by Category'
+                    }
+                }
+            }
+        });
+
+        // Line chart for Monthly
+        new Chart(document.getElementById("monthlyChart"), {
+            type: 'line',
+            data: {
+                labels: monthLabels,
+                datasets: [{
+                    label: 'Monthly Expenses',
+                    data: monthAmounts,
+                    borderWidth: 2,
+                    fill: false
+                }]
+            },
+            options: {
+                responsive: true,
+                plugins: {
+                    title: {
+                        display: true,
+                        text: 'Expenses by Month'
+                    }
+                },
+                scales: {
+                    y: {
+                        beginAtZero: true
+                    }
+                }
+            }
+        });
+        /*]]>*/
+    </script>
+</body>
+</html>
